@@ -1,0 +1,367 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /'     v 1.0   
+                                                                
+  Copyright (c) 2019 Kuangdai Leng & friends, MIT License       
+  Source, docs and issues: github.com/kuangdai/AxiSEM-3D        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  UniformEarth__10s.e
+  mesh CS               =  spherical
+  model name            =  prem_iso_smooth
+  isotropic             =  true
+  attenuation           =  false
+  storage type          =  element_nodes
+  # discontinuities     =  3
+Mesh geometry___________________________________________________
+  # elements            =  143310
+  # nodes               =  144003
+  range of r-axis       =  [0, 6.371e+06]
+  range of θ-axis       =  [0, 3.14159]
+Global variables________________________________________________
+  dist_tolerance        =  12.4506
+  dt (nPol = 1)         =  0.551337
+  min_edge_length       =  12450.6
+  minimum_period        =  9.98221
+  radius                =  6.371e+06
+  crdsys                =  spherical
+  model                 =  prem_iso_smooth
+Element geometry________________________________________________
+  linear                :  7854
+  semi-spherical        :  816
+  spherical             :  134640
+Element medium__________________________________________________
+  fluid                 :  0
+  solid                 :  143310
+Material properties_____________________________________________
+  RHO                   ∈  [5000, 5000]
+  VP                    ∈  [8000, 8000]
+  VS                    ∈  [5000, 5000]
+Side sets_______________________________________________________
+  r1                    :  816 sides
+  t0                    :  568 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  198 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEM --basic.model
+   ./UniformEarth.bm --basic.period 10 --output_file UniformEarth__10s.e
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  false
+surface radius         =  6.371e+06
+solid surface radius   =  6.371e+06
+bottom radius          =  0
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  5.871e+06
+* Perfect sphere, no ellipticity correction.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+user-specified boundaries  =  [RIGHT, BOTTOM]
+* The mesh contains none of these boundaries.
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  5
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  5
+max Nr  =  5
+ave Nr  =  5
+sum Nr  =  720015
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+* No 3D models in this simulation.
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.0952
+   Courant number      =  0.6
+   location (r,θ)      =  [944385, 2.34865]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.0952
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  SolidPoint$Mass1D              =  2295729
+  Σ                              =  2295729
+Spectral elements_______________________________________________
+  SolidElement$Isotropic1D       =  143310
+  Σ                              =  143310
+Axial boundary__________________________________________________
+  Solid                          =  2273
+  Fluid                          =  0
+  Σ                              =  2273
+Absorbing boundary______________________________________________
+  Σ                              =  0
+Fluid surface boundary__________________________________________
+  Σ                              =  0
+Solid-fluid boundary____________________________________________
+  Σ                              =  0
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  32
+  # rank-to-rank communications  =  74
+================================================================
+
+
+============================ Sources ===========================
+North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * This source is used to determine the reference
+    geographic location on the mesh axis.
+  Location______________________________________________________
+    latitude            =  90
+    longitude           =  0
+    depth               =  500000 (below solid surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    moment tensor       =  1e+16
+                           1e+16
+                           1e+16
+                           0
+                           0
+                           0
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  5
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  -1 (Error function)
+    expression of f(t)  =  (Erf[0.3256*t] + 1) / 2
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.0952
+t0 determined by sources  =  -12.5
+t1 specified by user      =  1500
+[t0, t1] used by solver   =  [-12.5664, 1500.07]
+# time steps              =  15890
+================================================================
+
+
+======================== Station groups ========================
+* No station groups in this simulation.
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 3.14159]
+    vertical range            =  [0, 6.371e+06]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  143310
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
+  Azimuthal sampling____________________________________________
+    * Recording on 36 azimuthal slices:
+      1) azimuth              =  0
+      2) azimuth              =  0.174533
+      3) azimuth              =  0.349066
+      4) azimuth              =  0.523599
+      5) azimuth              =  0.698132
+      6) azimuth              =  0.872665
+      7) azimuth              =  1.0472
+      8) azimuth              =  1.22173
+      9) azimuth              =  1.39626
+      10) azimuth             =  1.5708
+      11) azimuth             =  1.74533
+      12) azimuth             =  1.91986
+      13) azimuth             =  2.0944
+      14) azimuth             =  2.26893
+      15) azimuth             =  2.44346
+      16) azimuth             =  2.61799
+      17) azimuth             =  2.79253
+      18) azimuth             =  2.96706
+      19) azimuth             =  3.14159
+      20) azimuth             =  3.31613
+      21) azimuth             =  3.49066
+      22) azimuth             =  3.66519
+      23) azimuth             =  3.83972
+      24) azimuth             =  4.01426
+      25) azimuth             =  4.18879
+      26) azimuth             =  4.36332
+      27) azimuth             =  4.53786
+      28) azimuth             =  4.71239
+      29) azimuth             =  4.88692
+      30) azimuth             =  5.06145
+      31) azimuth             =  5.23599
+      32) azimuth             =  5.41052
+      33) azimuth             =  5.58505
+      34) azimuth             =  5.75959
+      35) azimuth             =  5.93412
+      36) azimuth             =  6.10865
+  Wavefields____________________________________________________
+    output coordinate system  =  spz
+    medium type               =  solid
+    user-specified channels   =  [U]
+    standardized channels     =  [U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  50
+      rounded to Δt           =  49.98
+    # time steps per sample   =  525
+    time window               =  [1000, 1500]
+  File options__________________________________________________
+    buffer size               =  100
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  143310
+    # azimuthal slices        =  36
+    # GLL points              =  9
+    # channels                =  3
+    # time steps              =  10
+================================================================
+
+
+====================== Wavefield Scanning ======================
+output file for scanning result           =  scanning_output_Nr.nc
+threshold for Fourier series convergence  =  0.01
+relative amplitude skipped for scanning   =  0.1
+absolute amplitude skipped for scanning   =  1e-12
+maximum number of energy peaks            =  10000
+perform scanning only on vertex points    =  true
+# time steps scanned per mesh period      =  12
+# time steps between two scanning steps   =  9
+# time steps scanned in total             =  1766
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  wave propagation time / sec  =  82.5384
+  time step / num total steps  =  1000 / 15890 (6%)
+  elapsed wall-clock time / h  =  0.0154718
+  est. remaining w-c time / h  =  0.230375
+  est. aggregate w-c time / h  =  0.245847
+
+  wave propagation time / sec  =  177.738
+  time step / num total steps  =  2000 / 15890 (12%)
+  elapsed wall-clock time / h  =  0.030366
+  est. remaining w-c time / h  =  0.210892
+  est. aggregate w-c time / h  =  0.241258
+
+  wave propagation time / sec  =  272.938
+  time step / num total steps  =  3000 / 15890 (18%)
+  elapsed wall-clock time / h  =  0.0453248
+  est. remaining w-c time / h  =  0.194746
+  est. aggregate w-c time / h  =  0.24007
+
+  wave propagation time / sec  =  368.138
+  time step / num total steps  =  4000 / 15890 (25%)
+  elapsed wall-clock time / h  =  0.0602645
+  est. remaining w-c time / h  =  0.179136
+  est. aggregate w-c time / h  =  0.239401
+
+  wave propagation time / sec  =  463.338
+  time step / num total steps  =  5000 / 15890 (31%)
+  elapsed wall-clock time / h  =  0.0751413
+  est. remaining w-c time / h  =  0.163658
+  est. aggregate w-c time / h  =  0.238799
+
+  wave propagation time / sec  =  558.538
+  time step / num total steps  =  6000 / 15890 (37%)
+  elapsed wall-clock time / h  =  0.0901586
+  est. remaining w-c time / h  =  0.148611
+  est. aggregate w-c time / h  =  0.23877
+
+  wave propagation time / sec  =  653.738
+  time step / num total steps  =  7000 / 15890 (44%)
+  elapsed wall-clock time / h  =  0.105218
+  est. remaining w-c time / h  =  0.133626
+  est. aggregate w-c time / h  =  0.238844
+
+  wave propagation time / sec  =  748.938
+  time step / num total steps  =  8000 / 15890 (50%)
+  elapsed wall-clock time / h  =  0.120277
+  est. remaining w-c time / h  =  0.118623
+  est. aggregate w-c time / h  =  0.238901
+
+  wave propagation time / sec  =  844.138
+  time step / num total steps  =  9000 / 15890 (56%)
+  elapsed wall-clock time / h  =  0.13532
+  est. remaining w-c time / h  =  0.103595
+  est. aggregate w-c time / h  =  0.238915
+
+  wave propagation time / sec  =  939.338
+  time step / num total steps  =  10000 / 15890 (62%)
+  elapsed wall-clock time / h  =  0.150361
+  est. remaining w-c time / h  =  0.0885625
+  est. aggregate w-c time / h  =  0.238923
+
+  wave propagation time / sec  =  1034.54
+  time step / num total steps  =  11000 / 15890 (69%)
+  elapsed wall-clock time / h  =  0.165365
+  est. remaining w-c time / h  =  0.0735122
+  est. aggregate w-c time / h  =  0.238877
+
+  wave propagation time / sec  =  1129.74
+  time step / num total steps  =  12000 / 15890 (75%)
+  elapsed wall-clock time / h  =  0.180471
+  est. remaining w-c time / h  =  0.0585028
+  est. aggregate w-c time / h  =  0.238974
+
+  wave propagation time / sec  =  1224.94
+  time step / num total steps  =  13000 / 15890 (81%)
+  elapsed wall-clock time / h  =  0.195594
+  est. remaining w-c time / h  =  0.043482
+  est. aggregate w-c time / h  =  0.239076
+
+  wave propagation time / sec  =  1320.14
+  time step / num total steps  =  14000 / 15890 (88%)
+  elapsed wall-clock time / h  =  0.210719
+  est. remaining w-c time / h  =  0.028447
+  est. aggregate w-c time / h  =  0.239166
+
+  wave propagation time / sec  =  1415.34
+  time step / num total steps  =  15000 / 15890 (94%)
+  elapsed wall-clock time / h  =  0.225832
+  est. remaining w-c time / h  =  0.0133994
+  est. aggregate w-c time / h  =  0.239232
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+wave propagation time / sec  =  1500.16
+total # time steps finished  =  15890
+elapsed wall-clock time / h  =  0.239721
+
