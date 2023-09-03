@@ -158,16 +158,16 @@ Axial boundary__________________________________________________
   Fluid                          =  165
   Σ                              =  165
 Absorbing boundary______________________________________________
-  ClaytonFluid1D                 =  596
+  ClaytonFluid1D                 =  595
   SpongeFluid                    =  5385
-  Σ                              =  5981
+  Σ                              =  5980
 Fluid surface boundary__________________________________________
   Σ                              =  321
 Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
-  # sub-domains (nproc)          =  24
-  # rank-to-rank communications  =  52
+  # sub-domains (nproc)          =  32
+  # rank-to-rank communications  =  73
 ================================================================
 
 
@@ -195,9 +195,9 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ======================== Simulation Time =======================
 Δt of simulation          =  0.001092
 t0 determined by sources  =  -0.125
-t1 specified by user      =  1.5
-[t0, t1] used by solver   =  [-0.12558, 1.50041]
-# time steps              =  1490
+t1 specified by user      =  3
+[t0, t1] used by solver   =  [-0.12558, 3.00082]
+# time steps              =  2864
 ================================================================
 
 
@@ -217,31 +217,28 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     GLL points on one edge    =  [0, 1, 2, 3, 4]
     # GLL points per element  =  25
   Azimuthal sampling____________________________________________
-    * Recording on 4 azimuthal slices:
+    * Recording on 1 azimuthal slices:
       1) azimuth              =  0
-      2) azimuth              =  1.5708
-      3) azimuth              =  3.14159
-      4) azimuth              =  4.71239
   Wavefields____________________________________________________
     output coordinate system  =  spz
     medium type               =  fluid
-    user-specified channels   =  [X]
-    standardized channels     =  [X]
+    user-specified channels   =  [U, X, P]
+    standardized channels     =  [X, U1, U2, U3, P]
   Temporal______________________________________________________
     sampling period
-      user-specified          =  0.02
-      rounded to Δt           =  0.019656
-    # time steps per sample   =  18
-    time window               =  [-0.12558, 1.5015]
+      user-specified          =  0.1
+      rounded to Δt           =  0.099372
+    # time steps per sample   =  91
+    time window               =  [-0.12558, 3.00191]
   File options__________________________________________________
     buffer size               =  100
     flush file                =  true
   Dimensions____________________________________________________
     # elements                =  3280
-    # azimuthal slices        =  4
+    # azimuthal slices        =  1
     # GLL points              =  25
-    # channels                =  1
-    # time steps              =  83
+    # channels                =  5
+    # time steps              =  32
 ================================================================
 
 
@@ -254,7 +251,7 @@ maximum number of energy peaks            =  10000
 perform scanning only on vertex points    =  true
 # time steps scanned per mesh period      =  12
 # time steps between two scanning steps   =  4
-# time steps scanned in total             =  373
+# time steps scanned in total             =  716
 ================================================================
 
 
@@ -265,17 +262,23 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 
   wave propagation time / sec  =  0.965328
-  time step / num total steps  =  1000 / 1490 (67%)
-  elapsed wall-clock time / h  =  9.49206e-05
-  est. remaining w-c time / h  =  4.65111e-05
-  est. aggregate w-c time / h  =  0.000141432
+  time step / num total steps  =  1000 / 2864 (34%)
+  elapsed wall-clock time / h  =  5.72829e-05
+  est. remaining w-c time / h  =  0.000106775
+  est. aggregate w-c time / h  =  0.000164058
+
+  wave propagation time / sec  =  2.05733
+  time step / num total steps  =  2000 / 2864 (69%)
+  elapsed wall-clock time / h  =  0.000109123
+  est. remaining w-c time / h  =  4.71411e-05
+  est. aggregate w-c time / h  =  0.000156264
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-wave propagation time / sec  =  1.5015
-total # time steps finished  =  1490
-elapsed wall-clock time / h  =  0.000164058
+wave propagation time / sec  =  3.00191
+total # time steps finished  =  2864
+elapsed wall-clock time / h  =  0.000169192
 
