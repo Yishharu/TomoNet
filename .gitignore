@@ -1,0 +1,5 @@
+# postprocessing Data
+DataSet/
+Runs/*/*
+!Runs/*/screen.txt
+Script/*.nc
