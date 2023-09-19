@@ -130,7 +130,7 @@ sum Nr  =  167160
 =========================== 3D Models ==========================
 box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   class name   =  StructuredGridV3D
-  NetCDF file  =  cyclinder.nc
+  NetCDF file  =  cylinder.nc
   Coordinates___________________________________________________
       COORD | NC-VAR | SCOPE
     * x     | x      | [-2000, 2000]
@@ -161,8 +161,8 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===================== Computational Domain =====================
 GLL points______________________________________________________
-  FluidPoint$Mass1D              =  45522
-  FluidPoint$Mass3D              =  7443
+  FluidPoint$Mass1D              =  44066
+  FluidPoint$Mass3D              =  8899
   Σ                              =  52965
 Spectral elements_______________________________________________
   FluidElement$Acoustic1D        =  3280
@@ -172,16 +172,17 @@ Axial boundary__________________________________________________
   Fluid                          =  165
   Σ                              =  165
 Absorbing boundary______________________________________________
-  ClaytonFluid1D                 =  597
+  ClaytonFluid1D                 =  565
+  ClaytonFluid3D                 =  31
   SpongeFluid                    =  5385
-  Σ                              =  5982
+  Σ                              =  5981
 Fluid surface boundary__________________________________________
   Σ                              =  321
 Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
   # sub-domains (nproc)          =  24
-  # rank-to-rank communications  =  52
+  # rank-to-rank communications  =  54
 ================================================================
 
 
@@ -198,20 +199,20 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     fluid pressure      =  1000
   Source-time function__________________________________________
     class name          =  GaussianSTF
-    half duration       =  0.5
+    half duration       =  0.05
     decay factor        =  1.628
     time shift          =  0
     derivative order    =  1 (1st derivative of Gaussian)
-    expression of f(t)  =  -38.9501 * t * Exp[-10.6015 * t ^ 2]
+    expression of f(t)  =  -38950.1 * t * Exp[-1060.15 * t ^ 2]
 ================================================================
 
 
 ======================== Simulation Time =======================
 Δt of simulation          =  0.0009099
-t0 determined by sources  =  -1.25
-t1 specified by user      =  4.5
-[t0, t1] used by solver   =  [-1.2502, 4.50037]
-# time steps              =  6321
+t0 determined by sources  =  -0.125
+t1 specified by user      =  1.5
+[t0, t1] used by solver   =  [-0.125566, 1.50043]
+# time steps              =  1788
 ================================================================
 
 
@@ -243,10 +244,10 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     standardized channels     =  [X]
   Temporal______________________________________________________
     sampling period
-      user-specified          =  0.05
-      rounded to Δt           =  0.0491346
-    # time steps per sample   =  54
-    time window               =  [-1.2502, 4.50128]
+      user-specified          =  0.02
+      rounded to Δt           =  0.0191079
+    # time steps per sample   =  21
+    time window               =  [-0.125566, 1.50134]
   File options__________________________________________________
     buffer size               =  100
     flush file                =  true
@@ -255,7 +256,7 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # azimuthal slices        =  4
     # GLL points              =  25
     # channels                =  1
-    # time steps              =  118
+    # time steps              =  86
 ================================================================
 
 
@@ -268,7 +269,7 @@ maximum number of energy peaks            =  10000
 perform scanning only on vertex points    =  true
 # time steps scanned per mesh period      =  12
 # time steps between two scanning steps   =  5
-# time steps scanned in total             =  1265
+# time steps scanned in total             =  358
 ================================================================
 
 
@@ -278,48 +279,18 @@ TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 
-  wave propagation time / sec  =  -0.341213
-  time step / num total steps  =  1000 / 6321 (15%)
-  elapsed wall-clock time / h  =  0.00106543
-  est. remaining w-c time / h  =  0.00566917
-  est. aggregate w-c time / h  =  0.00673461
-
-  wave propagation time / sec  =  0.568687
-  time step / num total steps  =  2000 / 6321 (31%)
-  elapsed wall-clock time / h  =  0.00212957
-  est. remaining w-c time / h  =  0.00460093
-  est. aggregate w-c time / h  =  0.0067305
-
-  wave propagation time / sec  =  1.47859
-  time step / num total steps  =  3000 / 6321 (47%)
-  elapsed wall-clock time / h  =  0.00319507
-  est. remaining w-c time / h  =  0.00353694
-  est. aggregate w-c time / h  =  0.00673201
-
-  wave propagation time / sec  =  2.38849
-  time step / num total steps  =  4000 / 6321 (63%)
-  elapsed wall-clock time / h  =  0.00426098
-  est. remaining w-c time / h  =  0.00247243
-  est. aggregate w-c time / h  =  0.00673341
-
-  wave propagation time / sec  =  3.29839
-  time step / num total steps  =  5000 / 6321 (79%)
-  elapsed wall-clock time / h  =  0.00532564
-  est. remaining w-c time / h  =  0.00140703
-  est. aggregate w-c time / h  =  0.00673267
-
-  wave propagation time / sec  =  4.20829
-  time step / num total steps  =  6000 / 6321 (94%)
-  elapsed wall-clock time / h  =  0.00643832
-  est. remaining w-c time / h  =  0.00034445
-  est. aggregate w-c time / h  =  0.00678277
+  wave propagation time / sec  =  0.783424
+  time step / num total steps  =  1000 / 1788 (55%)
+  elapsed wall-clock time / h  =  0.00110664
+  est. remaining w-c time / h  =  0.000872029
+  est. aggregate w-c time / h  =  0.00197866
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-wave propagation time / sec  =  4.50128
-total # time steps finished  =  6321
-elapsed wall-clock time / h  =  0.00682209
+wave propagation time / sec  =  1.50133
+total # time steps finished  =  1788
+elapsed wall-clock time / h  =  0.00214078
 
