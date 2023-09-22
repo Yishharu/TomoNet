@@ -14,151 +14,97 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-********************* WARNING FROM AxiSEM3D ********************
-FROM: io::verifyDirectories
-WHAT: Output directory exists; old output renamed to
-      /home/liz/CartesianModel0006_20pct/output__backup@2023-09-22T11:46:30
-TIME: 2023-09-22T11:46:30
-****************************************************************
-
-
 ========================== Exodus Mesh =========================
 Overview________________________________________________________
-  Exodus file           =  local_mesh__BG__20Hz.e
-  mesh CS               =  cartesian
-  model name            =  BG
+  Exodus file           =  UnifromEarth__50s.e
+  mesh CS               =  spherical
+  model name            =  prem_iso_smooth
   isotropic             =  true
-  attenuation           =  true
+  attenuation           =  false
   storage type          =  element_nodes
-  # discontinuities     =  2
+  # discontinuities     =  3
 Mesh geometry___________________________________________________
-  # elements            =  3280
-  # nodes               =  3402
-  range of s-axis       =  [0, 2000]
-  range of z-axis       =  [6.37e+06, 6.371e+06]
+  # elements            =  6270
+  # nodes               =  6420
+  range of r-axis       =  [0, 6.371e+06]
+  range of θ-axis       =  [0, 3.14159]
 Global variables________________________________________________
-  attenuation_f_max     =  10
-  attenuation_f_min     =  0.01
-  attenuation_f_ref     =  1
-  attenuation_w_0       =  0.0916847
-  attenuation_w_1       =  0.716923
-  attenuation_w_2       =  3.75795
-  attenuation_w_3       =  16.6005
-  attenuation_w_4       =  86.6238
-  attenuation_y_0       =  1.69029
-  attenuation_y_1       =  1.13586
-  attenuation_y_2       =  0.987317
-  attenuation_y_3       =  0.924363
-  attenuation_y_4       =  1.46141
-  dist_tolerance        =  0.0243902
-  dt (nPol = 1)         =  0.0146341
-  min_edge_length       =  24.3902
-  minimum_period        =  0.05
-  nr_lin_solids         =  5
-  crdsys                =  cartesian
-  model                 =  BG
+  dist_tolerance        =  61.5381
+  dt (nPol = 1)         =  2.38912
+  min_edge_length       =  61538.1
+  minimum_period        =  49.2305
+  radius                =  6.371e+06
+  crdsys                =  spherical
+  model                 =  prem_iso_smooth
 Element geometry________________________________________________
-  linear                :  3280
-  semi-spherical        :  0
-  spherical             :  0
+  linear                :  374
+  semi-spherical        :  176
+  spherical             :  5720
 Element medium__________________________________________________
-  fluid                 :  3280
-  solid                 :  0
+  fluid                 :  0
+  solid                 :  6270
 Material properties_____________________________________________
-  QKAPPA                ∈  [0, 0]
-  QMU                   ∈  [0, 0]
-  RHO                   ∈  [1000, 1000]
-  VP                    ∈  [1000, 1000]
-  VS                    ∈  [0, 0]
+  RHO                   ∈  [5000, 5000]
+  VP                    ∈  [8000, 8000]
+  VS                    ∈  [5000, 5000]
 Side sets_______________________________________________________
-  x0                    :  41 sides
-  x1                    :  41 sides
-  y0                    :  80 sides
-  y1                    :  80 sides
+  r1                    :  176 sides
+  t0                    :  122 sides
 Miscellaneous___________________________________________________
-  ellipticity curve     :  2 knots
+  ellipticity curve     :  198 knots
 ----------------------------------------------------------------
 Mesh generation command line:
->> python -m salvus_mesh_lite.interface AxiSEMCartesian --basic.model
-   BG.bm --basic.period 0.05 --cartesian2Daxisem.x 2.
-   --cartesian2Daxisem.min_z 6370.0 --attenuation.frequencies 0.01 10.
-   --output_filename local_mesh__BG__20Hz.e
+>> python -m salvus_mesh_lite.interface AxiSEM --basic.model
+   ./UnifromEarth.bm --basic.period 50 --output_file UnifromEarth__50s.e
 ================================================================
 
 
 ============================ Geodesy ===========================
-model in Cartesian     =  true
+model in Cartesian     =  false
 surface radius         =  6.371e+06
-solid surface radius   =  6.36998e+06
-bottom radius          =  6.37e+06
+solid surface radius   =  6.371e+06
+bottom radius          =  0
 a reference geographic location on the positive z-axis
   latitude             =  90
   longitude            =  0
-  radius               =  6.3708e+06
-* No ellipticity correction for Cartesian models.
+  radius               =  5.871e+06
+* Perfect sphere, no ellipticity correction.
 ================================================================
 
 
 ====================== Absorbing Boundary ======================
 user-specified boundaries  =  [RIGHT, BOTTOM]
-those contained in mesh    =  [RIGHT, BOTTOM]
-Clayton-Enquist enabled    =  true
-Kosloff-Kosloff enabled    =  true
-Parameters for Kosloff-Kosloff__________________________________
-  * RIGHT:
-    boundary location      =  2000
-    span of sponge layer   =  100
-    range of sponge layer  =  [1900, 2000]
-  * BOTTOM:
-    boundary location      =  6.37e+06
-    span of sponge layer   =  50
-    range of sponge layer  =  [6.37005e+06, 6.37e+06]
-  * Expression for γ-factor:
-    in solid: 1.1 / T0 * (VS / VP)^2 * exp(-0.04 * SPAN / (VP * T0))
-    in fluid: 0.88 / T0 * exp(-0.04 * SPAN / (VP * T0))
+* The mesh contains none of these boundaries.
 ================================================================
 
 
 ============================ Nr(s,z) ===========================
 type   =  CONSTANT
-value  =  50
+value  =  5
 ================================================================
 
 
 ====================== Computed Nr on Mesh =====================
 min Nr  =  5
-max Nr  =  50
-ave Nr  =  49
-sum Nr  =  167160
+max Nr  =  5
+ave Nr  =  5
+sum Nr  =  32100
 * Nr has been limited by inplane resolution.
 * Nr has been rounded up to FFTW lucky numbers.
 ================================================================
 
 
 =========================== 3D Models ==========================
-box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  class name   =  StructuredGridV3D
-  NetCDF file  =  cylinder_20pct.nc
-  Coordinates___________________________________________________
-      COORD | NC-VAR | SCOPE
-    * x     | x      | [150, 450]
-    * y     | y      | [-2000, 2000]
-    * depth | depth  | [150, 450]
-    depth below solid surface      =  false
-    force element center in scope  =  false
-  Properties____________________________________________________
-      KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.2, 0]
-    leader-only storage  =  true
+* No 3D models in this simulation.
 ================================================================
 
 
 =========================== Time Step ==========================
-Δt determined by mesh  =  0.0009099
-   Courant number      =  0.5
-   location (s,z)      =  [12.5, 6.37001e+06]
+Δt determined by mesh  =  0.4813
+   Courant number      =  0.7
+   location (r,θ)      =  [903496, 0.752463]
 Δt enforced by user    =  NONE
-Δt to be used          =  0.0009099
+Δt to be used          =  0.4813
 ================================================================
 
 
@@ -169,28 +115,24 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===================== Computational Domain =====================
 GLL points______________________________________________________
-  FluidPoint$Mass1D              =  44261
-  FluidPoint$Mass3D              =  8704
-  Σ                              =  52965
+  SolidPoint$Mass1D              =  100917
+  Σ                              =  100917
 Spectral elements_______________________________________________
-  FluidElement$Acoustic1D        =  3280
-  Σ                              =  3280
+  SolidElement$Isotropic1D       =  6270
+  Σ                              =  6270
 Axial boundary__________________________________________________
-  Solid                          =  0
-  Fluid                          =  165
-  Σ                              =  165
+  Solid                          =  489
+  Fluid                          =  0
+  Σ                              =  489
 Absorbing boundary______________________________________________
-  ClaytonFluid1D                 =  567
-  ClaytonFluid3D                 =  28
-  SpongeFluid                    =  5385
-  Σ                              =  5980
+  Σ                              =  0
 Fluid surface boundary__________________________________________
-  Σ                              =  321
+  Σ                              =  0
 Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
   # sub-domains (nproc)          =  32
-  # rank-to-rank communications  =  74
+  # rank-to-rank communications  =  75
 ================================================================
 
 
@@ -201,26 +143,31 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Location______________________________________________________
     latitude            =  90
     longitude           =  0
-    depth               =  200 (below outer surface)
+    depth               =  500000 (below solid surface)
     radial geometry     =  reference
   Source mechanism______________________________________________
-    fluid pressure      =  1000
+    moment tensor       =  1e+16
+                           1e+16
+                           1e+16
+                           1e+16
+                           1e+16
+                           1e+16
   Source-time function__________________________________________
     class name          =  GaussianSTF
-    half duration       =  0.05
+    half duration       =  5
     decay factor        =  1.628
     time shift          =  0
-    derivative order    =  1 (1st derivative of Gaussian)
-    expression of f(t)  =  -38950.1 * t * Exp[-1060.15 * t ^ 2]
+    derivative order    =  -1 (Error function)
+    expression of f(t)  =  (Erf[0.3256*t] + 1) / 2
 ================================================================
 
 
 ======================== Simulation Time =======================
-Δt of simulation          =  0.0009099
-t0 determined by sources  =  -0.125
-t1 specified by user      =  1.5
-[t0, t1] used by solver   =  [-0.125566, 1.50043]
-# time steps              =  1788
+Δt of simulation          =  0.4813
+t0 determined by sources  =  -12.5
+t1 specified by user      =  1500
+[t0, t1] used by solver   =  [-12.5138, 1500.21]
+# time steps              =  3144
 ================================================================
 
 
@@ -232,39 +179,71 @@ t1 specified by user      =  1.5
 ======================== Element groups ========================
 orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Elements______________________________________________________
-    horizontal range          =  [0, 1e+10]
-    vertical range            =  [0, 1e+10]
+    horizontal range          =  [0, 3.14159]
+    vertical range            =  [0, 6.371e+06]
   Inplane sampling______________________________________________
     edge dimension            =  both
-    # elements found          =  3280
-    GLL points on one edge    =  [0, 1, 2, 3, 4]
-    # GLL points per element  =  25
+    # elements found          =  6270
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
   Azimuthal sampling____________________________________________
-    * Recording on 4 azimuthal slices:
+    * Recording on 36 azimuthal slices:
       1) azimuth              =  0
-      2) azimuth              =  1.5708
-      3) azimuth              =  3.14159
-      4) azimuth              =  4.71239
+      2) azimuth              =  0.174533
+      3) azimuth              =  0.349066
+      4) azimuth              =  0.523599
+      5) azimuth              =  0.698132
+      6) azimuth              =  0.872665
+      7) azimuth              =  1.0472
+      8) azimuth              =  1.22173
+      9) azimuth              =  1.39626
+      10) azimuth             =  1.5708
+      11) azimuth             =  1.74533
+      12) azimuth             =  1.91986
+      13) azimuth             =  2.0944
+      14) azimuth             =  2.26893
+      15) azimuth             =  2.44346
+      16) azimuth             =  2.61799
+      17) azimuth             =  2.79253
+      18) azimuth             =  2.96706
+      19) azimuth             =  3.14159
+      20) azimuth             =  3.31613
+      21) azimuth             =  3.49066
+      22) azimuth             =  3.66519
+      23) azimuth             =  3.83972
+      24) azimuth             =  4.01426
+      25) azimuth             =  4.18879
+      26) azimuth             =  4.36332
+      27) azimuth             =  4.53786
+      28) azimuth             =  4.71239
+      29) azimuth             =  4.88692
+      30) azimuth             =  5.06145
+      31) azimuth             =  5.23599
+      32) azimuth             =  5.41052
+      33) azimuth             =  5.58505
+      34) azimuth             =  5.75959
+      35) azimuth             =  5.93412
+      36) azimuth             =  6.10865
   Wavefields____________________________________________________
     output coordinate system  =  spz
-    medium type               =  fluid
-    user-specified channels   =  [X]
-    standardized channels     =  [X]
+    medium type               =  solid
+    user-specified channels   =  [U]
+    standardized channels     =  [U1, U2, U3]
   Temporal______________________________________________________
     sampling period
-      user-specified          =  0.02
-      rounded to Δt           =  0.0191079
-    # time steps per sample   =  21
-    time window               =  [0, 1.5]
+      user-specified          =  50
+      rounded to Δt           =  49.5739
+    # time steps per sample   =  103
+    time window               =  [1000, 1500]
   File options__________________________________________________
     buffer size               =  100
     flush file                =  true
   Dimensions____________________________________________________
-    # elements                =  3280
-    # azimuthal slices        =  4
-    # GLL points              =  25
-    # channels                =  1
-    # time steps              =  79
+    # elements                =  6270
+    # azimuthal slices        =  36
+    # GLL points              =  9
+    # channels                =  3
+    # time steps              =  10
 ================================================================
 
 
@@ -276,8 +255,8 @@ absolute amplitude skipped for scanning   =  1e-12
 maximum number of energy peaks            =  10000
 perform scanning only on vertex points    =  true
 # time steps scanned per mesh period      =  12
-# time steps between two scanning steps   =  5
-# time steps scanned in total             =  358
+# time steps between two scanning steps   =  9
+# time steps scanned in total             =  350
 ================================================================
 
 
@@ -287,18 +266,30 @@ TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 
-  wave propagation time / sec  =  0.783424
-  time step / num total steps  =  1000 / 1788 (55%)
-  elapsed wall-clock time / h  =  0.000603161
-  est. remaining w-c time / h  =  0.000475291
-  est. aggregate w-c time / h  =  0.00107845
+  wave propagation time / sec  =  468.305
+  time step / num total steps  =  1000 / 3144 (31%)
+  elapsed wall-clock time / h  =  0.00148346
+  est. remaining w-c time / h  =  0.00318054
+  est. aggregate w-c time / h  =  0.00466399
+
+  wave propagation time / sec  =  949.605
+  time step / num total steps  =  2000 / 3144 (63%)
+  elapsed wall-clock time / h  =  0.00239617
+  est. remaining w-c time / h  =  0.00137061
+  est. aggregate w-c time / h  =  0.00376677
+
+  wave propagation time / sec  =  1430.9
+  time step / num total steps  =  3000 / 3144 (95%)
+  elapsed wall-clock time / h  =  0.00333698
+  est. remaining w-c time / h  =  0.000160175
+  est. aggregate w-c time / h  =  0.00349715
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-wave propagation time / sec  =  1.50133
-total # time steps finished  =  1788
-elapsed wall-clock time / h  =  0.00109921
+wave propagation time / sec  =  1500.69
+total # time steps finished  =  3144
+elapsed wall-clock time / h  =  0.00350592
 

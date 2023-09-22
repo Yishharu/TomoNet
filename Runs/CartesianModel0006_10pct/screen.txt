@@ -14,14 +14,6 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-********************* WARNING FROM AxiSEM3D ********************
-FROM: io::verifyDirectories
-WHAT: Output directory exists; old output renamed to
-      /home/liz/CartesianModel0006_20pct/output__backup@2023-09-22T11:46:30
-TIME: 2023-09-22T11:46:30
-****************************************************************
-
-
 ========================== Exodus Mesh =========================
 Overview________________________________________________________
   Exodus file           =  local_mesh__BG__20Hz.e
@@ -138,7 +130,7 @@ sum Nr  =  167160
 =========================== 3D Models ==========================
 box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   class name   =  StructuredGridV3D
-  NetCDF file  =  cylinder_20pct.nc
+  NetCDF file  =  cylinder_10pct.nc
   Coordinates___________________________________________________
       COORD | NC-VAR | SCOPE
     * x     | x      | [150, 450]
@@ -148,7 +140,7 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     force element center in scope  =  false
   Properties____________________________________________________
       KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.2, 0]
+    * VP  | dvp    | REF1D    | [-0.1, 0]
     leader-only storage  =  true
 ================================================================
 
@@ -289,9 +281,9 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
   wave propagation time / sec  =  0.783424
   time step / num total steps  =  1000 / 1788 (55%)
-  elapsed wall-clock time / h  =  0.000603161
-  est. remaining w-c time / h  =  0.000475291
-  est. aggregate w-c time / h  =  0.00107845
+  elapsed wall-clock time / h  =  0.000600171
+  est. remaining w-c time / h  =  0.000472935
+  est. aggregate w-c time / h  =  0.00107311
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -300,5 +292,5 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 wave propagation time / sec  =  1.50133
 total # time steps finished  =  1788
-elapsed wall-clock time / h  =  0.00109921
+elapsed wall-clock time / h  =  0.00112184
 
