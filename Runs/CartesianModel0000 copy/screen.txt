@@ -14,14 +14,6 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-********************* WARNING FROM AxiSEM3D ********************
-FROM: io::verifyDirectories
-WHAT: Output directory exists; old output renamed to
-      /home/liz/CartesianModel0006_20pct/output__backup@2023-09-22T11:46:30
-TIME: 2023-09-22T11:46:30
-****************************************************************
-
-
 ========================== Exodus Mesh =========================
 Overview________________________________________________________
   Exodus file           =  local_mesh__BG__20Hz.e
@@ -121,44 +113,31 @@ Parameters for Kosloff-Kosloff__________________________________
 
 ============================ Nr(s,z) ===========================
 type   =  CONSTANT
-value  =  50
+value  =  1
 ================================================================
 
 
 ====================== Computed Nr on Mesh =====================
-min Nr  =  5
-max Nr  =  50
-ave Nr  =  49
-sum Nr  =  167160
+min Nr  =  1
+max Nr  =  1
+ave Nr  =  1
+sum Nr  =  3402
 * Nr has been limited by inplane resolution.
 * Nr has been rounded up to FFTW lucky numbers.
 ================================================================
 
 
 =========================== 3D Models ==========================
-box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  class name   =  StructuredGridV3D
-  NetCDF file  =  cylinder_20pct.nc
-  Coordinates___________________________________________________
-      COORD | NC-VAR | SCOPE
-    * x     | x      | [150, 450]
-    * y     | y      | [-2000, 2000]
-    * depth | depth  | [150, 450]
-    depth below solid surface      =  false
-    force element center in scope  =  false
-  Properties____________________________________________________
-      KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.2, 0]
-    leader-only storage  =  true
+* No 3D models in this simulation.
 ================================================================
 
 
 =========================== Time Step ==========================
-Δt determined by mesh  =  0.0009099
-   Courant number      =  0.5
+Δt determined by mesh  =  0.001092
+   Courant number      =  0.6
    location (s,z)      =  [12.5, 6.37001e+06]
 Δt enforced by user    =  NONE
-Δt to be used          =  0.0009099
+Δt to be used          =  0.001092
 ================================================================
 
 
@@ -169,8 +148,7 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===================== Computational Domain =====================
 GLL points______________________________________________________
-  FluidPoint$Mass1D              =  44261
-  FluidPoint$Mass3D              =  8704
+  FluidPoint$Mass1D              =  52965
   Σ                              =  52965
 Spectral elements_______________________________________________
   FluidElement$Acoustic1D        =  3280
@@ -180,8 +158,7 @@ Axial boundary__________________________________________________
   Fluid                          =  165
   Σ                              =  165
 Absorbing boundary______________________________________________
-  ClaytonFluid1D                 =  567
-  ClaytonFluid3D                 =  28
+  ClaytonFluid1D                 =  595
   SpongeFluid                    =  5385
   Σ                              =  5980
 Fluid surface boundary__________________________________________
@@ -190,7 +167,7 @@ Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
   # sub-domains (nproc)          =  32
-  # rank-to-rank communications  =  74
+  # rank-to-rank communications  =  73
 ================================================================
 
 
@@ -210,17 +187,17 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     half duration       =  0.05
     decay factor        =  1.628
     time shift          =  0
-    derivative order    =  1 (1st derivative of Gaussian)
-    expression of f(t)  =  -38950.1 * t * Exp[-1060.15 * t ^ 2]
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
 ================================================================
 
 
 ======================== Simulation Time =======================
-Δt of simulation          =  0.0009099
+Δt of simulation          =  0.001092
 t0 determined by sources  =  -0.125
-t1 specified by user      =  1.5
-[t0, t1] used by solver   =  [-0.125566, 1.50043]
-# time steps              =  1788
+t1 specified by user      =  3
+[t0, t1] used by solver   =  [-0.12558, 3.00082]
+# time steps              =  2864
 ================================================================
 
 
@@ -240,31 +217,28 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     GLL points on one edge    =  [0, 1, 2, 3, 4]
     # GLL points per element  =  25
   Azimuthal sampling____________________________________________
-    * Recording on 4 azimuthal slices:
+    * Recording on 1 azimuthal slices:
       1) azimuth              =  0
-      2) azimuth              =  1.5708
-      3) azimuth              =  3.14159
-      4) azimuth              =  4.71239
   Wavefields____________________________________________________
     output coordinate system  =  spz
     medium type               =  fluid
-    user-specified channels   =  [X]
-    standardized channels     =  [X]
+    user-specified channels   =  [U, X, P]
+    standardized channels     =  [X, U1, U2, U3, P]
   Temporal______________________________________________________
     sampling period
-      user-specified          =  0.02
-      rounded to Δt           =  0.0191079
-    # time steps per sample   =  21
-    time window               =  [0, 1.5]
+      user-specified          =  0.1
+      rounded to Δt           =  0.099372
+    # time steps per sample   =  91
+    time window               =  [-0.12558, 3.00191]
   File options__________________________________________________
     buffer size               =  100
     flush file                =  true
   Dimensions____________________________________________________
     # elements                =  3280
-    # azimuthal slices        =  4
+    # azimuthal slices        =  1
     # GLL points              =  25
-    # channels                =  1
-    # time steps              =  79
+    # channels                =  5
+    # time steps              =  32
 ================================================================
 
 
@@ -276,8 +250,8 @@ absolute amplitude skipped for scanning   =  1e-12
 maximum number of energy peaks            =  10000
 perform scanning only on vertex points    =  true
 # time steps scanned per mesh period      =  12
-# time steps between two scanning steps   =  5
-# time steps scanned in total             =  358
+# time steps between two scanning steps   =  4
+# time steps scanned in total             =  716
 ================================================================
 
 
@@ -287,18 +261,24 @@ TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 
-  wave propagation time / sec  =  0.783424
-  time step / num total steps  =  1000 / 1788 (55%)
-  elapsed wall-clock time / h  =  0.000603161
-  est. remaining w-c time / h  =  0.000475291
-  est. aggregate w-c time / h  =  0.00107845
+  wave propagation time / sec  =  0.965328
+  time step / num total steps  =  1000 / 2864 (34%)
+  elapsed wall-clock time / h  =  5.73762e-05
+  est. remaining w-c time / h  =  0.000106949
+  est. aggregate w-c time / h  =  0.000164325
+
+  wave propagation time / sec  =  2.05733
+  time step / num total steps  =  2000 / 2864 (69%)
+  elapsed wall-clock time / h  =  0.00011121
+  est. remaining w-c time / h  =  4.80427e-05
+  est. aggregate w-c time / h  =  0.000159253
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-wave propagation time / sec  =  1.50133
-total # time steps finished  =  1788
-elapsed wall-clock time / h  =  0.00109921
+wave propagation time / sec  =  3.00191
+total # time steps finished  =  2864
+elapsed wall-clock time / h  =  0.000178348
 

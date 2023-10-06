@@ -130,17 +130,17 @@ sum Nr  =  167160
 =========================== 3D Models ==========================
 box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   class name   =  StructuredGridV3D
-  NetCDF file  =  cylinder_5pct.nc
+  NetCDF file  =  cylinder_20pct.nc
   Coordinates___________________________________________________
       COORD | NC-VAR | SCOPE
-    * x     | x      | [150, 450]
+    * x     | x      | [50, 350]
     * y     | y      | [-2000, 2000]
     * depth | depth  | [150, 450]
     depth below solid surface      =  false
     force element center in scope  =  false
   Properties____________________________________________________
       KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.05, 0]
+    * VP  | dvp    | REF1D    | [-0.2, 0]
     leader-only storage  =  true
 ================================================================
 
@@ -161,8 +161,8 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===================== Computational Domain =====================
 GLL points______________________________________________________
-  FluidPoint$Mass1D              =  44261
-  FluidPoint$Mass3D              =  8704
+  FluidPoint$Mass1D              =  44914
+  FluidPoint$Mass3D              =  8051
   Σ                              =  52965
 Spectral elements_______________________________________________
   FluidElement$Acoustic1D        =  3280
@@ -172,17 +172,17 @@ Axial boundary__________________________________________________
   Fluid                          =  165
   Σ                              =  165
 Absorbing boundary______________________________________________
-  ClaytonFluid1D                 =  568
-  ClaytonFluid3D                 =  28
+  ClaytonFluid1D                 =  571
+  ClaytonFluid3D                 =  27
   SpongeFluid                    =  5385
-  Σ                              =  5981
+  Σ                              =  5983
 Fluid surface boundary__________________________________________
   Σ                              =  321
 Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
-  # sub-domains (nproc)          =  32
-  # rank-to-rank communications  =  73
+  # sub-domains (nproc)          =  24
+  # rank-to-rank communications  =  52
 ================================================================
 
 
@@ -281,9 +281,9 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
   wave propagation time / sec  =  0.783424
   time step / num total steps  =  1000 / 1788 (55%)
-  elapsed wall-clock time / h  =  0.000576376
-  est. remaining w-c time / h  =  0.000454184
-  est. aggregate w-c time / h  =  0.00103056
+  elapsed wall-clock time / h  =  0.00131758
+  est. remaining w-c time / h  =  0.00103825
+  est. aggregate w-c time / h  =  0.00235584
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -292,5 +292,5 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 wave propagation time / sec  =  1.50133
 total # time steps finished  =  1788
-elapsed wall-clock time / h  =  0.00105741
+elapsed wall-clock time / h  =  0.00310517
 
