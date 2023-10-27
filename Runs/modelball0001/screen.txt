@@ -102,23 +102,23 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       COORD     | NC-VAR    | SCOPE
     * latitude  | latitude  | [-90, 90]
     * longitude | longitude | [-180, 180]
-    * radius    | radius    | [0, 1e+06]
+    * radius    | radius    | [0, 1000]
     ellipticity correction         =  false
     radial geometry                =  reference
     force element center in scope  =  false
   Properties____________________________________________________
       KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.0475725, 0.0402429]
+    * VP  | dvp    | REF1D    | [-0.0528386, 0.0395165]
     leader-only storage  =  true
 ================================================================
 
 
 =========================== Time Step ==========================
-Δt determined by mesh  =  0.0004604
+Δt determined by mesh  =  0.0004617
    Courant number      =  0.6
-   location (r,θ)      =  [138.522, 0.829349]
+   location (r,θ)      =  [146.053, 0.737935]
 Δt enforced by user    =  NONE
-Δt to be used          =  0.0004604
+Δt to be used          =  0.0004617
 ================================================================
 
 
@@ -171,17 +171,17 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     half duration       =  0.05
     decay factor        =  1.628
     time shift          =  0
-    derivative order    =  -1 (Error function)
-    expression of f(t)  =  (Erf[32.56*t] + 1) / 2
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
 ================================================================
 
 
 ======================== Simulation Time =======================
-Δt of simulation          =  0.0004604
+Δt of simulation          =  0.0004617
 t0 determined by sources  =  -0.125
 t1 specified by user      =  3
-[t0, t1] used by solver   =  [-0.125229, 3.00043]
-# time steps              =  6790
+[t0, t1] used by solver   =  [-0.125121, 3.00013]
+# time steps              =  6770
 ================================================================
 
 
@@ -198,8 +198,8 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Inplane sampling______________________________________________
     edge dimension            =  both
     # elements found          =  3648
-    GLL points on one edge    =  [0, 1, 2, 3, 4]
-    # GLL points per element  =  25
+    GLL points on one edge    =  [2]
+    # GLL points per element  =  1
   Azimuthal sampling____________________________________________
     * Recording on 36 azimuthal slices:
       1) azimuth              =  0
@@ -246,7 +246,7 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Temporal______________________________________________________
     sampling period
       user-specified          =  0.05
-      rounded to Δt           =  0.0497232
+      rounded to Δt           =  0.0498636
     # time steps per sample   =  108
     time window               =  [0, 3]
   File options__________________________________________________
@@ -255,7 +255,7 @@ orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Dimensions____________________________________________________
     # elements                =  3648
     # azimuthal slices        =  36
-    # GLL points              =  25
+    # GLL points              =  1
     # channels                =  3
     # time steps              =  60
 ================================================================
@@ -270,7 +270,7 @@ maximum number of energy peaks            =  10000
 perform scanning only on vertex points    =  true
 # time steps scanned per mesh period      =  12
 # time steps between two scanning steps   =  9
-# time steps scanned in total             =  755
+# time steps scanned in total             =  753
 ================================================================
 
 
@@ -280,48 +280,48 @@ TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 
-  wave propagation time / sec  =  0.334711
-  time step / num total steps  =  1000 / 6790 (14%)
-  elapsed wall-clock time / h  =  0.00575522
-  est. remaining w-c time / h  =  0.0333227
-  est. aggregate w-c time / h  =  0.0390779
+  wave propagation time / sec  =  0.336118
+  time step / num total steps  =  1000 / 6770 (14%)
+  elapsed wall-clock time / h  =  0.00379662
+  est. remaining w-c time / h  =  0.0219065
+  est. aggregate w-c time / h  =  0.0257031
 
-  wave propagation time / sec  =  0.795111
-  time step / num total steps  =  2000 / 6790 (29%)
-  elapsed wall-clock time / h  =  0.0115129
-  est. remaining w-c time / h  =  0.0275735
-  est. aggregate w-c time / h  =  0.0390864
+  wave propagation time / sec  =  0.797818
+  time step / num total steps  =  2000 / 6770 (29%)
+  elapsed wall-clock time / h  =  0.00760167
+  est. remaining w-c time / h  =  0.01813
+  est. aggregate w-c time / h  =  0.0257317
 
-  wave propagation time / sec  =  1.25551
-  time step / num total steps  =  3000 / 6790 (44%)
-  elapsed wall-clock time / h  =  0.0172878
-  est. remaining w-c time / h  =  0.0218403
-  est. aggregate w-c time / h  =  0.0391281
+  wave propagation time / sec  =  1.25952
+  time step / num total steps  =  3000 / 6770 (44%)
+  elapsed wall-clock time / h  =  0.0114008
+  est. remaining w-c time / h  =  0.014327
+  est. aggregate w-c time / h  =  0.0257277
 
-  wave propagation time / sec  =  1.71591
-  time step / num total steps  =  4000 / 6790 (58%)
-  elapsed wall-clock time / h  =  0.0230716
-  est. remaining w-c time / h  =  0.0160924
-  est. aggregate w-c time / h  =  0.039164
+  wave propagation time / sec  =  1.72122
+  time step / num total steps  =  4000 / 6770 (59%)
+  elapsed wall-clock time / h  =  0.01523
+  est. remaining w-c time / h  =  0.0105468
+  est. aggregate w-c time / h  =  0.0257768
 
-  wave propagation time / sec  =  2.17631
-  time step / num total steps  =  5000 / 6790 (73%)
-  elapsed wall-clock time / h  =  0.0288356
-  est. remaining w-c time / h  =  0.0103231
-  est. aggregate w-c time / h  =  0.0391587
+  wave propagation time / sec  =  2.18292
+  time step / num total steps  =  5000 / 6770 (73%)
+  elapsed wall-clock time / h  =  0.019041
+  est. remaining w-c time / h  =  0.0067405
+  est. aggregate w-c time / h  =  0.0257815
 
-  wave propagation time / sec  =  2.63671
-  time step / num total steps  =  6000 / 6790 (88%)
-  elapsed wall-clock time / h  =  0.0346091
-  est. remaining w-c time / h  =  0.00455687
-  est. aggregate w-c time / h  =  0.039166
+  wave propagation time / sec  =  2.64462
+  time step / num total steps  =  6000 / 6770 (88%)
+  elapsed wall-clock time / h  =  0.0228575
+  est. remaining w-c time / h  =  0.00293338
+  est. aggregate w-c time / h  =  0.0257909
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-wave propagation time / sec  =  3.00089
-total # time steps finished  =  6790
-elapsed wall-clock time / h  =  0.0404973
+wave propagation time / sec  =  3.00059
+total # time steps finished  =  6770
+elapsed wall-clock time / h  =  0.027287
 
