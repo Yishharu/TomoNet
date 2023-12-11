@@ -1,0 +1,323 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /'     v 1.0   
+                                                                
+  Copyright (c) 2019 Kuangdai Leng & friends, MIT License       
+  Source, docs and issues: github.com/kuangdai/AxiSEM-3D        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  local_mesh__BGAB__20Hz.e
+  mesh CS               =  cartesian
+  model name            =  BG
+  isotropic             =  true
+  attenuation           =  true
+  storage type          =  element_nodes
+  # discontinuities     =  2
+Mesh geometry___________________________________________________
+  # elements            =  3660
+  # nodes               =  3782
+  range of s-axis       =  [0, 1500]
+  range of z-axis       =  [6.3695e+06, 6.371e+06]
+Global variables________________________________________________
+  attenuation_f_max     =  10
+  attenuation_f_min     =  0.01
+  attenuation_f_ref     =  1
+  attenuation_w_0       =  0.0916847
+  attenuation_w_1       =  0.716923
+  attenuation_w_2       =  3.75795
+  attenuation_w_3       =  16.6005
+  attenuation_w_4       =  86.6238
+  attenuation_y_0       =  1.69029
+  attenuation_y_1       =  1.13586
+  attenuation_y_2       =  0.987317
+  attenuation_y_3       =  0.924363
+  attenuation_y_4       =  1.46141
+  dist_tolerance        =  0.0245902
+  dt (nPol = 1)         =  0.0147541
+  min_edge_length       =  24.5902
+  minimum_period        =  0.05
+  nr_lin_solids         =  5
+  crdsys                =  cartesian
+  model                 =  BG
+Element geometry________________________________________________
+  linear                :  3660
+  semi-spherical        :  0
+  spherical             :  0
+Element medium__________________________________________________
+  fluid                 :  3660
+  solid                 :  0
+Material properties_____________________________________________
+  QKAPPA                ∈  [0, 0]
+  QMU                   ∈  [0, 0]
+  RHO                   ∈  [1000, 1000]
+  VP                    ∈  [1000, 1000]
+  VS                    ∈  [0, 0]
+Side sets_______________________________________________________
+  x0                    :  61 sides
+  x1                    :  61 sides
+  y0                    :  60 sides
+  y1                    :  60 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  2 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEMCartesian --basic.model
+   BG.bm --basic.period 0.05 --cartesian2Daxisem.x 1.5
+   --cartesian2Daxisem.min_z 6369.5 --attenuation.frequencies 0.01 10.
+   --output_filename local_mesh__BGAB__20Hz.e
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  true
+surface radius         =  6.371e+06
+solid surface radius   =  6.36948e+06
+bottom radius          =  6.3695e+06
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  6.3708e+06
+* No ellipticity correction for Cartesian models.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+user-specified boundaries  =  [RIGHT, BOTTOM]
+those contained in mesh    =  [RIGHT, BOTTOM]
+Clayton-Enquist enabled    =  true
+Kosloff-Kosloff enabled    =  true
+Parameters for Kosloff-Kosloff__________________________________
+  * RIGHT:
+    boundary location      =  1500
+    span of sponge layer   =  75
+    range of sponge layer  =  [1425, 1500]
+  * BOTTOM:
+    boundary location      =  6.3695e+06
+    span of sponge layer   =  75
+    range of sponge layer  =  [6.36958e+06, 6.3695e+06]
+  * Expression for γ-factor:
+    in solid: 1.1 / T0 * (VS / VP)^2 * exp(-0.04 * SPAN / (VP * T0))
+    in fluid: 0.88 / T0 * exp(-0.04 * SPAN / (VP * T0))
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  50
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  5
+max Nr  =  50
+ave Nr  =  49
+sum Nr  =  184760
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  class name   =  StructuredGridV3D
+  NetCDF file  =  cartesian_random_tomo.nc
+  Coordinates___________________________________________________
+      COORD | NC-VAR | SCOPE
+    * x     | x      | [0, 1200]
+    * y     | y      | [-2000, 2000]
+    * depth | depth  | [0, 1000]
+    depth below solid surface      =  false
+    force element center in scope  =  false
+  Properties____________________________________________________
+      KEY | NC-VAR | REF KIND | RANGE
+    * VP  | dvp    | REF1D    | [-0.218822, 0.274603]
+    leader-only storage  =  true
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.0008512
+   Courant number      =  0.5
+   location (s,z)      =  [1487.5, 6.37e+06]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.0008512
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  FluidPoint$Mass1D              =  19925
+  FluidPoint$Mass3D              =  39120
+  Σ                              =  59045
+Spectral elements_______________________________________________
+  FluidElement$Acoustic1D        =  3660
+  Σ                              =  3660
+Axial boundary__________________________________________________
+  Solid                          =  0
+  Fluid                          =  245
+  Σ                              =  245
+Absorbing boundary______________________________________________
+  ClaytonFluid1D                 =  398
+  ClaytonFluid3D                 =  199
+  SpongeFluid                    =  5917
+  Σ                              =  6514
+Fluid surface boundary__________________________________________
+  Σ                              =  241
+Solid-fluid boundary____________________________________________
+  Σ                              =  0
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  24
+  # rank-to-rank communications  =  54
+================================================================
+
+
+============================ Sources ===========================
+North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * This source is used to determine the reference
+    geographic location on the mesh axis.
+  Location______________________________________________________
+    latitude            =  90
+    longitude           =  0
+    depth               =  200 (below outer surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    fluid pressure      =  1000
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  0.05
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.0008512
+t0 determined by sources  =  -0.125
+t1 specified by user      =  2
+[t0, t1] used by solver   =  [-0.125126, 2.00032]
+# time steps              =  2498
+================================================================
+
+
+======================== Station groups ========================
+Synthetic_Stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Locations_____________________________________________________
+    station location file      =  Synthetic_Stations_Cartesian.txt
+    coordinates in file        =  (X, Y, depth)
+    depth below solid surface  =  false
+    radial geometry            =  reference
+  Wavefields____________________________________________________
+    output coordinate system   =  spz
+    medium type                =  fluid
+    user-specified channels    =  [X]
+    standardized channels      =  [X]
+  Temporal______________________________________________________
+    sampling period
+      user-specified           =  0.02
+      rounded to Δt            =  0.0195776
+    # time steps per sample    =  23
+    time window                =  [0, 2]
+  File options__________________________________________________
+    output file format         =  NetCDF (serial)
+    buffer size                =  1000
+    flush file                 =  true
+  Dimensions____________________________________________________
+    # stations                 =  37
+    # channels                 =  1
+    # time steps               =  102
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 1200.01]
+    vertical range            =  [6.37e+06, 6.371e+06]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  1968
+    GLL points on one edge    =  [0, 1, 2, 3, 4]
+    # GLL points per element  =  25
+  Azimuthal sampling____________________________________________
+    * Recording on 1 azimuthal slices:
+      1) azimuth              =  0
+  Wavefields____________________________________________________
+    output coordinate system  =  spz
+    medium type               =  fluid
+    user-specified channels   =  [X]
+    standardized channels     =  [X]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  0.02
+      rounded to Δt           =  0.0195776
+    # time steps per sample   =  23
+    time window               =  [0, 2]
+  File options__________________________________________________
+    buffer size               =  100
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  1968
+    # azimuthal slices        =  1
+    # GLL points              =  25
+    # channels                =  1
+    # time steps              =  102
+================================================================
+
+
+====================== Wavefield Scanning ======================
+output file for scanning result           =  scanning_output_Nr.nc
+threshold for Fourier series convergence  =  0.01
+relative amplitude skipped for scanning   =  0.1
+absolute amplitude skipped for scanning   =  1e-12
+maximum number of energy peaks            =  10000
+perform scanning only on vertex points    =  true
+# time steps scanned per mesh period      =  12
+# time steps between two scanning steps   =  5
+# time steps scanned in total             =  500
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  wave propagation time / sec  =  0.725222
+  time step / num total steps  =  1000 / 2498 (40%)
+  elapsed wall-clock time / h  =  0.00148188
+  est. remaining w-c time / h  =  0.00221986
+  est. aggregate w-c time / h  =  0.00370175
+
+  wave propagation time / sec  =  1.57642
+  time step / num total steps  =  2000 / 2498 (80%)
+  elapsed wall-clock time / h  =  0.00296388
+  est. remaining w-c time / h  =  0.000738006
+  est. aggregate w-c time / h  =  0.00370188
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+wave propagation time / sec  =  2.00117
+total # time steps finished  =  2498
+elapsed wall-clock time / h  =  0.00492173
+
