@@ -1,0 +1,285 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /'     v 1.0   
+                                                                
+  Copyright (c) 2019 Kuangdai Leng & friends, MIT License       
+  Source, docs and issues: github.com/kuangdai/AxiSEM-3D        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  UniformAcousticBall__10Hz.e
+  mesh CS               =  spherical
+  model name            =  prem_iso_smooth
+  isotropic             =  true
+  attenuation           =  false
+  storage type          =  element_nodes
+  # discontinuities     =  3
+Mesh geometry___________________________________________________
+  # elements            =  510
+  # nodes               =  553
+  range of r-axis       =  [0, 1000]
+  range of θ-axis       =  [0, 3.14159]
+Global variables________________________________________________
+  dist_tolerance        =  0.0335191
+  dt (nPol = 1)         =  0.0075
+  min_edge_length       =  33.5191
+  minimum_period        =  0.0944444
+  radius                =  1000
+  crdsys                =  spherical
+  model                 =  prem_iso_smooth
+Element geometry________________________________________________
+  linear                :  18
+  semi-spherical        :  48
+  spherical             :  444
+Element medium__________________________________________________
+  fluid                 :  510
+  solid                 :  0
+Material properties_____________________________________________
+  RHO                   ∈  [1000, 1000]
+  VP                    ∈  [1500, 1500]
+  VS                    ∈  [0, 0]
+Side sets_______________________________________________________
+  r1                    :  48 sides
+  t0                    :  36 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  198 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEM --basic.model
+   ./UniformBall.bm --basic.period 0.1 --output_file
+   UniformAcousticBall__10Hz.e
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  false
+surface radius         =  1000
+solid surface radius   =  -33.5191
+bottom radius          =  0
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  800
+* Perfect sphere, no ellipticity correction.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+user-specified boundaries  =  [RIGHT, BOTTOM]
+* The mesh contains none of these boundaries.
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  1
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  1
+max Nr  =  1
+ave Nr  =  1
+sum Nr  =  553
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+* No 3D models in this simulation.
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.001295
+   Courant number      =  0.6
+   location (r,θ)      =  [137.175, 2.47556]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.001295
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  FluidPoint$Mass1D              =  8329
+  Σ                              =  8329
+Spectral elements_______________________________________________
+  FluidElement$Acoustic1D        =  510
+  Σ                              =  510
+Axial boundary__________________________________________________
+  Solid                          =  0
+  Fluid                          =  145
+  Σ                              =  145
+Absorbing boundary______________________________________________
+  Σ                              =  0
+Fluid surface boundary__________________________________________
+  Σ                              =  193
+Solid-fluid boundary____________________________________________
+  Σ                              =  0
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  24
+  # rank-to-rank communications  =  56
+================================================================
+
+
+============================ Sources ===========================
+North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * This source is used to determine the reference
+    geographic location on the mesh axis.
+  Location______________________________________________________
+    latitude            =  90
+    longitude           =  0
+    depth               =  200 (below outer surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    fluid pressure      =  1000
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  0.1
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  9.18501 * Exp[-265.038 * t ^ 2]
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.001295
+t0 determined by sources  =  -0.25
+t1 specified by user      =  3
+[t0, t1] used by solver   =  [-0.25123, 3.00052]
+# time steps              =  2512
+================================================================
+
+
+======================== Station groups ========================
+* No station groups in this simulation.
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 3.14159]
+    vertical range            =  [0, 6.371e+06]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  510
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
+  Azimuthal sampling____________________________________________
+    * Recording on 36 azimuthal slices:
+      1) azimuth              =  0
+      2) azimuth              =  0.174533
+      3) azimuth              =  0.349066
+      4) azimuth              =  0.523599
+      5) azimuth              =  0.698132
+      6) azimuth              =  0.872665
+      7) azimuth              =  1.0472
+      8) azimuth              =  1.22173
+      9) azimuth              =  1.39626
+      10) azimuth             =  1.5708
+      11) azimuth             =  1.74533
+      12) azimuth             =  1.91986
+      13) azimuth             =  2.0944
+      14) azimuth             =  2.26893
+      15) azimuth             =  2.44346
+      16) azimuth             =  2.61799
+      17) azimuth             =  2.79253
+      18) azimuth             =  2.96706
+      19) azimuth             =  3.14159
+      20) azimuth             =  3.31613
+      21) azimuth             =  3.49066
+      22) azimuth             =  3.66519
+      23) azimuth             =  3.83972
+      24) azimuth             =  4.01426
+      25) azimuth             =  4.18879
+      26) azimuth             =  4.36332
+      27) azimuth             =  4.53786
+      28) azimuth             =  4.71239
+      29) azimuth             =  4.88692
+      30) azimuth             =  5.06145
+      31) azimuth             =  5.23599
+      32) azimuth             =  5.41052
+      33) azimuth             =  5.58505
+      34) azimuth             =  5.75959
+      35) azimuth             =  5.93412
+      36) azimuth             =  6.10865
+  Wavefields____________________________________________________
+    output coordinate system  =  spz
+    medium type               =  fluid
+    user-specified channels   =  [X]
+    standardized channels     =  [X]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  0.1
+      rounded to Δt           =  0.099715
+    # time steps per sample   =  77
+    time window               =  [0, 3]
+  File options__________________________________________________
+    buffer size               =  100
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  510
+    # azimuthal slices        =  36
+    # GLL points              =  9
+    # channels                =  1
+    # time steps              =  30
+================================================================
+
+
+====================== Wavefield Scanning ======================
+output file for scanning result           =  scanning_output_Nr.nc
+threshold for Fourier series convergence  =  0.01
+relative amplitude skipped for scanning   =  0.1
+absolute amplitude skipped for scanning   =  1e-12
+maximum number of energy peaks            =  10000
+perform scanning only on vertex points    =  true
+# time steps scanned per mesh period      =  12
+# time steps between two scanning steps   =  6
+# time steps scanned in total             =  419
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  wave propagation time / sec  =  1.04248
+  time step / num total steps  =  1000 / 2512 (39%)
+  elapsed wall-clock time / h  =  1.77477e-05
+  est. remaining w-c time / h  =  2.68345e-05
+  est. aggregate w-c time / h  =  4.45821e-05
+
+  wave propagation time / sec  =  2.33748
+  time step / num total steps  =  2000 / 2512 (79%)
+  elapsed wall-clock time / h  =  3.17029e-05
+  est. remaining w-c time / h  =  8.11594e-06
+  est. aggregate w-c time / h  =  3.98188e-05
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+wave propagation time / sec  =  3.00181
+total # time steps finished  =  2512
+elapsed wall-clock time / h  =  4.40145e-05
+
