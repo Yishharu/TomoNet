@@ -167,8 +167,8 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     half duration       =  0.05
     decay factor        =  1.628
     time shift          =  0
-    derivative order    =  -1 (Error function)
-    expression of f(t)  =  (Erf[32.56*t] + 1) / 2
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
 ================================================================
 
 
@@ -187,7 +187,7 @@ Synthetic_Stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     station location file      =  Synthetic_Stations_Ball.txt
     coordinates in file        =  (latitude, longitude, depth)
     ellipticity correction     =  false
-    depth below solid surface  =  true
+    depth below solid surface  =  false
     radial geometry            =  reference
   Wavefields____________________________________________________
     output coordinate system   =  spz
@@ -262,27 +262,27 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
   wave propagation time / sec  =  0.580661
   time step / num total steps  =  1000 / 4425 (22%)
-  elapsed wall-clock time / h  =  0.00333447
-  est. remaining w-c time / h  =  0.0114206
-  est. aggregate w-c time / h  =  0.014755
+  elapsed wall-clock time / h  =  0.000691085
+  est. remaining w-c time / h  =  0.00236697
+  est. aggregate w-c time / h  =  0.00305805
 
   wave propagation time / sec  =  1.28706
   time step / num total steps  =  2000 / 4425 (45%)
-  elapsed wall-clock time / h  =  0.00684785
-  est. remaining w-c time / h  =  0.00830302
-  est. aggregate w-c time / h  =  0.0151509
+  elapsed wall-clock time / h  =  0.0014138
+  est. remaining w-c time / h  =  0.00171423
+  est. aggregate w-c time / h  =  0.00312802
 
   wave propagation time / sec  =  1.99346
   time step / num total steps  =  3000 / 4425 (67%)
-  elapsed wall-clock time / h  =  0.0103326
-  est. remaining w-c time / h  =  0.00490799
-  est. aggregate w-c time / h  =  0.0152406
+  elapsed wall-clock time / h  =  0.00213249
+  est. remaining w-c time / h  =  0.00101293
+  est. aggregate w-c time / h  =  0.00314542
 
   wave propagation time / sec  =  2.69986
   time step / num total steps  =  4000 / 4425 (90%)
-  elapsed wall-clock time / h  =  0.0138589
-  est. remaining w-c time / h  =  0.00147251
-  est. aggregate w-c time / h  =  0.0153314
+  elapsed wall-clock time / h  =  0.0028544
+  est. remaining w-c time / h  =  0.00030328
+  est. aggregate w-c time / h  =  0.00315768
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -291,5 +291,5 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 wave propagation time / sec  =  3.00079
 total # time steps finished  =  4425
-elapsed wall-clock time / h  =  0.0154207
+elapsed wall-clock time / h  =  0.00317959
 

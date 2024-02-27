@@ -109,7 +109,7 @@ box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     force element center in scope  =  false
   Properties____________________________________________________
       KEY | NC-VAR | REF KIND | RANGE
-    * VP  | dvp    | REF1D    | [-0.505319, 0.536323]
+    * VP  | dvp    | REF1D    | [-0.541163, 0.466671]
     leader-only storage  =  true
 ================================================================
 
@@ -148,7 +148,7 @@ Solid-fluid boundary____________________________________________
   Σ                              =  0
 Domain decomposition____________________________________________
   # sub-domains (nproc)          =  24
-  # rank-to-rank communications  =  54
+  # rank-to-rank communications  =  53
 ================================================================
 
 
@@ -168,8 +168,8 @@ North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     half duration       =  0.05
     decay factor        =  1.628
     time shift          =  0
-    derivative order    =  -1 (Error function)
-    expression of f(t)  =  (Erf[32.56*t] + 1) / 2
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
 ================================================================
 
 
@@ -188,7 +188,7 @@ Synthetic_Stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     station location file      =  Synthetic_Stations_Ball.txt
     coordinates in file        =  (latitude, longitude, depth)
     ellipticity correction     =  false
-    depth below solid surface  =  true
+    depth below solid surface  =  false
     radial geometry            =  reference
   Wavefields____________________________________________________
     output coordinate system   =  spz
@@ -263,27 +263,27 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
   wave propagation time / sec  =  0.580661
   time step / num total steps  =  1000 / 4425 (22%)
-  elapsed wall-clock time / h  =  0.00194875
-  est. remaining w-c time / h  =  0.00667447
-  est. aggregate w-c time / h  =  0.00862322
+  elapsed wall-clock time / h  =  0.000789802
+  est. remaining w-c time / h  =  0.00270507
+  est. aggregate w-c time / h  =  0.00349488
 
   wave propagation time / sec  =  1.28706
   time step / num total steps  =  2000 / 4425 (45%)
-  elapsed wall-clock time / h  =  0.00448137
-  est. remaining w-c time / h  =  0.00543367
-  est. aggregate w-c time / h  =  0.00991504
+  elapsed wall-clock time / h  =  0.00161015
+  est. remaining w-c time / h  =  0.00195231
+  est. aggregate w-c time / h  =  0.00356247
 
   wave propagation time / sec  =  1.99346
   time step / num total steps  =  3000 / 4425 (67%)
-  elapsed wall-clock time / h  =  0.0065264
-  est. remaining w-c time / h  =  0.00310004
-  est. aggregate w-c time / h  =  0.00962645
+  elapsed wall-clock time / h  =  0.00241806
+  est. remaining w-c time / h  =  0.00114858
+  est. aggregate w-c time / h  =  0.00356663
 
   wave propagation time / sec  =  2.69986
   time step / num total steps  =  4000 / 4425 (90%)
-  elapsed wall-clock time / h  =  0.00856565
-  est. remaining w-c time / h  =  0.0009101
-  est. aggregate w-c time / h  =  0.00947575
+  elapsed wall-clock time / h  =  0.00324146
+  est. remaining w-c time / h  =  0.000344405
+  est. aggregate w-c time / h  =  0.00358586
 
 
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -292,5 +292,5 @@ TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 wave propagation time / sec  =  3.00079
 total # time steps finished  =  4425
-elapsed wall-clock time / h  =  0.00949484
+elapsed wall-clock time / h  =  0.00360522
 
