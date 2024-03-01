@@ -1,0 +1,296 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /'     v 1.0   
+                                                                
+  Copyright (c) 2019 Kuangdai Leng & friends, MIT License       
+  Source, docs and issues: github.com/kuangdai/AxiSEM-3D        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  UniformAcousticBall__20Hz.e
+  mesh CS               =  spherical
+  model name            =  prem_iso_smooth
+  isotropic             =  true
+  attenuation           =  false
+  storage type          =  element_nodes
+  # discontinuities     =  3
+Mesh geometry___________________________________________________
+  # elements            =  3648
+  # nodes               =  3760
+  range of r-axis       =  [0, 1000]
+  range of θ-axis       =  [0, 3.14159]
+Global variables________________________________________________
+  dist_tolerance        =  0.0125
+  dt (nPol = 1)         =  0.00409091
+  min_edge_length       =  12.5
+  minimum_period        =  0.05
+  radius                =  1000
+  crdsys                =  spherical
+  model                 =  prem_iso_smooth
+Element geometry________________________________________________
+  linear                :  192
+  semi-spherical        :  128
+  spherical             :  3328
+Element medium__________________________________________________
+  fluid                 :  3648
+  solid                 :  0
+Material properties_____________________________________________
+  RHO                   ∈  [1000, 1000]
+  VP                    ∈  [1000, 1000]
+  VS                    ∈  [0, 0]
+Side sets_______________________________________________________
+  r1                    :  128 sides
+  t0                    :  94 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  198 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEM --basic.model
+   ./UniformAcousticBall.bm --basic.period 0.05 --output_file
+   UniformAcousticBall__20Hz.e
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  false
+surface radius         =  1000
+solid surface radius   =  -12.5
+bottom radius          =  0
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  800
+* Perfect sphere, no ellipticity correction.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+user-specified boundaries  =  [RIGHT, BOTTOM]
+* The mesh contains none of these boundaries.
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  16
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  5
+max Nr  =  16
+ave Nr  =  16
+sum Nr  =  59115
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+box_tomo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  class name   =  StructuredGridV3D
+  NetCDF file  =  degree8_random.nc
+  Coordinates___________________________________________________
+      COORD     | NC-VAR    | SCOPE
+    * latitude  | latitude  | [-90, 90]
+    * longitude | longitude | [-180, 180]
+    * depth     | depth     | [0, 800]
+    ellipticity correction         =  false
+    depth below solid surface      =  false
+    force element center in scope  =  false
+  Properties____________________________________________________
+      KEY | NC-VAR | REF KIND | RANGE
+    * VP  | dvp    | REF1D    | [-0.252505, 0.231597]
+    leader-only storage  =  true
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.0007064
+   Courant number      =  0.6
+   location (r,θ)      =  [146.053, 0.737935]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.0007064
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  FluidPoint$Mass1D              =  4797
+  FluidPoint$Mass3D              =  54016
+  Σ                              =  58813
+Spectral elements_______________________________________________
+  FluidElement$Acoustic1D        =  3648
+  Σ                              =  3648
+Axial boundary__________________________________________________
+  Solid                          =  0
+  Fluid                          =  377
+  Σ                              =  377
+Absorbing boundary______________________________________________
+  Σ                              =  0
+Fluid surface boundary__________________________________________
+  Σ                              =  513
+Solid-fluid boundary____________________________________________
+  Σ                              =  0
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  24
+  # rank-to-rank communications  =  56
+================================================================
+
+
+============================ Sources ===========================
+North_Pole ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * This source is used to determine the reference
+    geographic location on the mesh axis.
+  Location______________________________________________________
+    latitude            =  90
+    longitude           =  0
+    depth               =  200 (below outer surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    fluid pressure      =  1000
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  0.05
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  18.37 * Exp[-1060.15 * t ^ 2]
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.0007064
+t0 determined by sources  =  -0.125
+t1 specified by user      =  3
+[t0, t1] used by solver   =  [-0.125033, 3.00008]
+# time steps              =  4425
+================================================================
+
+
+======================== Station groups ========================
+Synthetic_Stations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Locations_____________________________________________________
+    station location file      =  Synthetic_Stations_Ball.txt
+    coordinates in file        =  (latitude, longitude, depth)
+    ellipticity correction     =  false
+    depth below solid surface  =  false
+    radial geometry            =  reference
+  Wavefields____________________________________________________
+    output coordinate system   =  spz
+    medium type                =  fluid
+    user-specified channels    =  [U]
+    standardized channels      =  [U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified           =  0.0007064
+      rounded to Δt            =  0.0007064
+    # time steps per sample    =  1
+    time window                =  [-0.125033, 3.00079]
+  File options__________________________________________________
+    output file format         =  NetCDF (serial)
+    buffer size                =  1000
+    flush file                 =  true
+  Dimensions____________________________________________________
+    # stations                 =  1369
+    # channels                 =  3
+    # time steps               =  4425
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 1e+10]
+    vertical range            =  [0, 1e+10]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  3648
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
+  Azimuthal sampling____________________________________________
+    * Recording on 8 azimuthal slices:
+      1) azimuth              =  0
+      2) azimuth              =  0.785398
+      3) azimuth              =  1.5708
+      4) azimuth              =  2.35619
+      5) azimuth              =  3.14159
+      6) azimuth              =  3.92699
+      7) azimuth              =  4.71239
+      8) azimuth              =  5.49779
+  Wavefields____________________________________________________
+    output coordinate system  =  spz
+    medium type               =  fluid
+    user-specified channels   =  [X, U]
+    standardized channels     =  [X, U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  0.2
+      rounded to Δt           =  0.199911
+    # time steps per sample   =  283
+    time window               =  [0, 3]
+  File options__________________________________________________
+    buffer size               =  100
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  3648
+    # azimuthal slices        =  8
+    # GLL points              =  9
+    # channels                =  4
+    # time steps              =  15
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  wave propagation time / sec  =  0.580661
+  time step / num total steps  =  1000 / 4425 (22%)
+  elapsed wall-clock time / h  =  0.000666028
+  est. remaining w-c time / h  =  0.00228114
+  est. aggregate w-c time / h  =  0.00294717
+
+  wave propagation time / sec  =  1.28706
+  time step / num total steps  =  2000 / 4425 (45%)
+  elapsed wall-clock time / h  =  0.00148218
+  est. remaining w-c time / h  =  0.00179715
+  est. aggregate w-c time / h  =  0.00327933
+
+  wave propagation time / sec  =  1.99346
+  time step / num total steps  =  3000 / 4425 (67%)
+  elapsed wall-clock time / h  =  0.00259086
+  est. remaining w-c time / h  =  0.00123066
+  est. aggregate w-c time / h  =  0.00382151
+
+  wave propagation time / sec  =  2.69986
+  time step / num total steps  =  4000 / 4425 (90%)
+  elapsed wall-clock time / h  =  0.00330232
+  est. remaining w-c time / h  =  0.000350871
+  est. aggregate w-c time / h  =  0.00365319
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+wave propagation time / sec  =  3.00079
+total # time steps finished  =  4425
+elapsed wall-clock time / h  =  0.0039945
+
