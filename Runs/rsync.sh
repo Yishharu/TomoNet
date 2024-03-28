@@ -1,1 +1,1 @@
-rsync -avz --exclude='*.pkl' ./LatinSphericalHarmonicsAcousticBall* freeosc:/home/liz/TomoNetData/ToRuns
+rsync -avz --exclude='*.pkl' ./LatinSphericalHarmonicsElasticBall* freeosc:/home/liz/TomoNetData/ToRuns
